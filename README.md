@@ -1,2 +1,2 @@
 # GeekTrust
-GeekTrust projects
+GeekTrust projects I have worked on
