@@ -3,9 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MakeSpace.Functional_Classes
+namespace MakeSpace.FunctionalClasses
 {
-    public class Scheduler
+    public interface IScheduler
+    {
+        void AddMeetingRooms(MeetingRoom room);
+        string BookRoom(DateTime startTime, DateTime endTime, int personCapacity);
+        string ViewVacancy(DateTime startTime, DateTime endTime);
+    }
+
+    public class Scheduler : IScheduler
     {
         private List<MeetingRoom> meetingRooms;
         private List<Booking> bookings;
@@ -16,7 +23,7 @@ namespace MakeSpace.Functional_Classes
 
         public string BookRoom(DateTime startTime, DateTime endTime, int personCapacity)
         {
-            if (personCapacity < 2 || personCapacity > 20)
+            if (personCapacity < (int)RoomConstraints.Min || personCapacity > (int)RoomConstraints.Max)
                 return "NO_VACANT_ROOM";
 
             if (!IsValidTime(startTime) || !IsValidTime(endTime) || endTime <= startTime)
@@ -57,7 +64,7 @@ namespace MakeSpace.Functional_Classes
                                        (endTime > b.StartTime && endTime <= b.EndTime)));
         }
 
-        private bool IsBufferTime(DateTime startTime, DateTime endTime)
+        private static bool IsBufferTime(DateTime startTime, DateTime endTime)
         {
             var bufferTimes = new List<(TimeSpan, TimeSpan)>
             {
@@ -69,9 +76,9 @@ namespace MakeSpace.Functional_Classes
             return bufferTimes.Any(bt => (startTime.TimeOfDay < bt.Item2 && endTime.TimeOfDay > bt.Item1));
         }
 
-        private bool IsValidTime(DateTime time)
+        private static bool IsValidTime(DateTime time)
         {
-            return time.Minute % 15 == 0;
+            return time.Minute % (int)TimeConstraints.Quarter == 0;
         }
 
         public void AddMeetingRooms(MeetingRoom room)

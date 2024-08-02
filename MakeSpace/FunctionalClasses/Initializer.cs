@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MakeSpace.Functional_Classes
+namespace MakeSpace.FunctionalClasses
 {
     public class Initializer
     {

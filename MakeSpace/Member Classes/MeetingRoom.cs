@@ -6,10 +6,16 @@ using System.Threading.Tasks;
 
 namespace MakeSpace.Member_Classes
 {
-    public class MeetingRoom
+    public interface IMeetingRoom
     {
-        public string Name { get; set; }
-        public int Capacity { get; set; }
+        int Capacity { get; }
+        string Name { get; }
+    }
+
+    public class MeetingRoom : IMeetingRoom
+    {
+        public string Name { get; private set; }
+        public int Capacity { get; private set; }
         public MeetingRoom(string name, int capacity)
         {
             Name = name;

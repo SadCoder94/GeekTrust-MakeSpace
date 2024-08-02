@@ -1,4 +1,4 @@
-﻿using MakeSpace.Functional_Classes;
+﻿using MakeSpace.FunctionalClasses;
 using MakeSpace.Member_Classes;
 using System;
 using System.Collections.Generic;
