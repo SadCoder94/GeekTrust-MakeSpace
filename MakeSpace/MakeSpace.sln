@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeSpace", "MakeSpace.csproj", "{C29A9968-6226-44AB-9D26-364843167623}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MakeSpace", "MakeSpace.csproj", "{C29A9968-6226-44AB-9D26-364843167623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeSpaceUnitTests", "..\MakeSpaceUnitTests\MakeSpaceUnitTests.csproj", "{6D7FE164-6583-4DDC-A37B-94F8BA79FF52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C29A9968-6226-44AB-9D26-364843167623}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C29A9968-6226-44AB-9D26-364843167623}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C29A9968-6226-44AB-9D26-364843167623}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D7FE164-6583-4DDC-A37B-94F8BA79FF52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D7FE164-6583-4DDC-A37B-94F8BA79FF52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D7FE164-6583-4DDC-A37B-94F8BA79FF52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D7FE164-6583-4DDC-A37B-94F8BA79FF52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

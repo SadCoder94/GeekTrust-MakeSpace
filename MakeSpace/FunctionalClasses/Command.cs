@@ -4,7 +4,7 @@ namespace MakeSpace.FunctionalClasses
 {
     public abstract class Command
     {
-        public abstract string Execute(Scheduler scheduler);
+        public abstract string Execute(IScheduler scheduler);
     }
 
     public class VacancyCommand : Command
@@ -20,7 +20,7 @@ namespace MakeSpace.FunctionalClasses
             this.isValid = isValid;
         }
 
-        public override string Execute(Scheduler scheduler)
+        public override string Execute(IScheduler scheduler)
         {
             if (!isValid || endDate < startDate)
             {
@@ -47,12 +47,15 @@ namespace MakeSpace.FunctionalClasses
             this.isValid = isValid;
         }
 
-        public override string Execute(Scheduler scheduler)
+        public override string Execute(IScheduler scheduler)
         {
             if (!isValid || endDate < startDate)
             {
                 return "INCORRECT_INPUT";
             }
+
+            if(capacity < 0)
+                return "INCORRECT_INPUT";
 
             var booking = scheduler.BookRoom(startDate, endDate, capacity);
             return booking;
