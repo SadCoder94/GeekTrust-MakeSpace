@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MakeSpaceUnitTests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb634836cb0235fb9e7df867d4d9081379973e19")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55a024a9b28fd619fbad3193bc5085675e157e25")]
 [assembly: System.Reflection.AssemblyProductAttribute("MakeSpaceUnitTests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MakeSpaceUnitTests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
