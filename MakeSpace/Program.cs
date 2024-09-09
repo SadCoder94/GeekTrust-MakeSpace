@@ -2,6 +2,7 @@
 using MakeSpace.Member_Classes;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace MakeSpace
 {
@@ -16,11 +17,16 @@ namespace MakeSpace
                 new MeetingRoom("G-Mansion", 20)
             };
 
-            var scheduler = new Scheduler();
+            var scheduler = new Scheduler(rooms);
 
-            foreach (var room in rooms)
+            if (args.Length > 0 && !string.IsNullOrEmpty(args[0]))
             {
-                scheduler.AddMeetingRooms(room);
+                var commands = CommandParser.ParseCommands(args[0]);
+                foreach (var command in commands)
+                {
+                    var result = command.Execute(scheduler);
+                    Console.WriteLine(result);
+                }
             }
 
 

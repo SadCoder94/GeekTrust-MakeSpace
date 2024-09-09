@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MakeSpace
+﻿namespace MakeSpace
 {
     public enum RoomConstraints
     {
         Min = 2,
-        Max = 3
+        Max = 20
     }
 
     public enum TimeConstraints
     {
-        Quarter = 15
+        Interval = 15
     }
 
 }

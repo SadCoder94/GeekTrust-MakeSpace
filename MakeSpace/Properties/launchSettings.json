@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "MakeSpace": {
+      "commandName": "Project",
+      "commandLineArgs": "D:/TestInput.txt"
+    }
+  }
+}

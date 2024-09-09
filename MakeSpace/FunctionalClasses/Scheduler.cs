@@ -7,18 +7,19 @@ namespace MakeSpace.FunctionalClasses
 {
     public interface IScheduler
     {
-        void AddMeetingRooms(MeetingRoom room);
         string BookRoom(DateTime startTime, DateTime endTime, int personCapacity);
         string ViewVacancy(DateTime startTime, DateTime endTime);
     }
 
     public class Scheduler : IScheduler
     {
-        private List<MeetingRoom> meetingRooms;
+        private readonly List<MeetingRoom> _meetingRooms;
         private List<Booking> bookings;
 
-        public Scheduler()
+        public Scheduler(List<MeetingRoom> meetingRooms)
         {
+            _meetingRooms = meetingRooms;
+            bookings = new List<Booking>();
         }
 
         public string BookRoom(DateTime startTime, DateTime endTime, int personCapacity)
@@ -26,10 +27,10 @@ namespace MakeSpace.FunctionalClasses
             if (personCapacity < (int)RoomConstraints.Min || personCapacity > (int)RoomConstraints.Max)
                 return "NO_VACANT_ROOM";
 
-            if (!IsValidTime(startTime) || !IsValidTime(endTime) || endTime <= startTime)
+            if (endTime <= startTime)
                 return "INCORRECT_INPUT";
 
-            foreach (var room in meetingRooms.OrderBy(r => r.Capacity))
+            foreach (var room in _meetingRooms.OrderBy(r => r.Capacity))
             {
                 if (room.Capacity >= personCapacity && IsRoomAvailable(room, startTime, endTime))
                 {
@@ -43,13 +44,16 @@ namespace MakeSpace.FunctionalClasses
 
         public string ViewVacancy(DateTime startTime, DateTime endTime)
         {
-            if (!IsValidTime(startTime) || !IsValidTime(endTime) || endTime <= startTime)
+            if (endTime <= startTime)
                 return "INCORRECT_INPUT";
 
-            var availableRooms = meetingRooms
+            var availableRooms = _meetingRooms
                 .Where(room => IsRoomAvailable(room, startTime, endTime))
                 .OrderBy(room => room.Capacity)
                 .Select(room => room.Name);
+
+            if (availableRooms.Count() == 0)
+                return "NO_VACANT_ROOM";
 
             return string.Join(" ", availableRooms);
         }
@@ -76,15 +80,6 @@ namespace MakeSpace.FunctionalClasses
             return bufferTimes.Any(bt => (startTime.TimeOfDay < bt.Item2 && endTime.TimeOfDay > bt.Item1));
         }
 
-        private static bool IsValidTime(DateTime time)
-        {
-            return time.Minute % (int)TimeConstraints.Quarter == 0;
-        }
-
-        public void AddMeetingRooms(MeetingRoom room)
-        {
-            meetingRooms.Add(room);
-        }
     }
 
 }
